@@ -4,7 +4,6 @@
 require('dotenv-flow').config();
 import { serverInit } from './server';
 
-console.log('database host:', process.env.NODE_ENV);
 /////////////////////////////////////////
 /*            Server Setup             */
 /////////////////////////////////////////
