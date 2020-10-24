@@ -4,7 +4,7 @@
   "description": "URL Shortener",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --respawn --transpileOnly -r tsconfig-paths/register ./src/index.ts",
+    "dev": "cross-env NODE_ENV=development tsnd --respawn --transpile-only -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc"
   },
   "repository": {
@@ -22,18 +22,26 @@
     "@hapi/hapi": "^20.0.1",
     "@hapi/inert": "^6.0.3",
     "@hapi/vision": "^6.0.1",
-    "dotenv-flow": "^3.2.0",
+    "cross-env": "^7.0.2",
+    "dotenv-flow": "^3.1.0",
     "hapi-cors": "^1.0.3",
     "joi": "^17.2.1",
     "lodash": "^4.17.20",
+    "mysql2": "^2.2.5",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.22.3",
+    "sequelize-typescript": "^1.1.0",
     "typescript": "^4.0.3"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.32",
     "@types/dotenv-flow": "^3.1.0",
     "@types/hapi__boom": "^9.0.1",
     "@types/hapi__hapi": "^20.0.1",
     "@types/hapi__inert": "^5.2.1",
     "@types/hapi__vision": "^5.5.2",
+    "@types/node": "^14.14.2",
+    "@types/validator": "^13.1.0",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "cross-var": "^1.1.0",
