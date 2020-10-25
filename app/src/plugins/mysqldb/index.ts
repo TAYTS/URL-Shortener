@@ -21,6 +21,8 @@ const mysqldb = {
     const sequelize = new Sequelize(MYSQL_URL);
 
     InitModels(sequelize);
+
+    await sequelize.sync();
   },
 };
 
