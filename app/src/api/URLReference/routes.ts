@@ -6,7 +6,7 @@ import { createURLReference } from './controllers';
 /////////////////////////////////////////
 /*          import validator           */
 /////////////////////////////////////////
-import { createURLReferencePayload } from './validator';
+import { createURLReferencePayload, createURLReferenceResponse } from './validator';
 
 /////////////////////////////////////////
 /*           route definition          */
@@ -22,6 +22,9 @@ export const URLReferenceRoutes = [
       description: 'Create URL reference mapping.',
       validate: {
         payload: createURLReferencePayload,
+      },
+      response: {
+        status: { 201: createURLReferenceResponse },
       },
       plugins: {
         'hapi-swagger': {
