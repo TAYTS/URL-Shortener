@@ -1,0 +1,13 @@
+/////////////////////////////////////////
+/*           import utils              */
+/////////////////////////////////////////
+import { Request } from 'types';
+
+/////////////////////////////////////////
+/*             definition              */
+/////////////////////////////////////////
+export interface URLRedirectRequest extends Request {
+  params: {
+    urlHash: string;
+  };
+}
