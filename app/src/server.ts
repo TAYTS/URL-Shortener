@@ -1,6 +1,7 @@
 /////////////////////////////////////////
 /*            import library           */
 /////////////////////////////////////////
+require('dotenv-flow').config();
 import { Server } from '@hapi/hapi';
 import { registerPlugins } from 'plugins';
 import { registerAPIs } from 'api';
@@ -18,7 +19,7 @@ export const server = new Server({
   routes: { cors: { origin: ['*'] } },
 });
 
-export async function serverInit(): Promise<void> {
+export async function serverInit(): Promise<Server> {
   try {
     //  Setup Hapi Plugins
     await registerPlugins(server);
@@ -26,12 +27,27 @@ export async function serverInit(): Promise<void> {
     // Setup APIs
     await registerAPIs(server);
 
-    // Start Server
-    await server.start();
+    // Initialise Server
+    await server.initialize();
 
-    console.log('Server listening at %s:%s', SERVER_URL, PORT);
+    return server;
   } catch (err) {
-    console.error('Error starting server: ', err);
+    console.error('Error initialise server: ', err);
     throw err;
   }
 }
+
+export async function serverStart(): Promise<void> {
+  try {
+    const server = await serverInit();
+    await server.start();
+    console.log(`Server listening at ${SERVER_URL}:${PORT}`);
+  } catch (err) {
+    console.log('Error staring server:', err);
+  }
+}
+
+process.on('unhandledRejection', (err) => {
+  console.log(err);
+  process.exit(1);
+});
