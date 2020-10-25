@@ -30,7 +30,7 @@ describe('Create URL Reference', () => {
       method,
       url,
       payload: {
-        url: faker.internet.url(),
+        url: fakeURL,
       },
     };
     const response = await server.inject(injectOptions);
