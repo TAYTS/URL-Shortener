@@ -3,7 +3,6 @@
 /////////////////////////////////////////
 import { Server } from '@hapi/hapi';
 import { URLReferenceRoutes } from './routes';
-import { URLReference } from 'models';
 
 /////////////////////////////////////////
 /*          plugin definition          */

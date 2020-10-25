@@ -3,7 +3,7 @@
 /////////////////////////////////////////
 import { ResponseToolkit, ResponseObject } from '@hapi/hapi';
 import { Boom, badImplementation } from '@hapi/boom';
-import { URLReference, URLReferenceCreationAttributes } from 'models';
+import { URLReference } from 'models';
 import { CreateURLReferenceRequest } from '../types';
 import crypto from 'crypto';
 
@@ -19,14 +19,14 @@ export async function createURLReference(
 
     const urlHash = crypto.randomBytes(url.length).toString('hex').slice(0, 15);
 
-    const urlResource = await URLReference.create({
+    await URLReference.create({
       originalURL: url,
       URLHash: urlHash,
     });
 
     return h
       .response({
-        url: `http://${process.env.DOMAIN}/${urlHash}`,
+        url: `${process.env.DOMAIN}/${urlHash}`,
       })
       .code(201);
   } catch (error) {
