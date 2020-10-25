@@ -2,9 +2,10 @@
 /*            import library           */
 /////////////////////////////////////////
 import { ResponseToolkit, ResponseObject } from '@hapi/hapi';
-import {} from '@hapi/boom';
-import { URLReference } from 'models';
+import { Boom, badImplementation } from '@hapi/boom';
+import { URLReference, URLReferenceCreationAttributes } from 'models';
 import { CreateURLReferenceRequest } from '../types';
+import crypto from 'crypto';
 
 /////////////////////////////////////////
 /*        controller definition        */
@@ -12,6 +13,24 @@ import { CreateURLReferenceRequest } from '../types';
 export async function createURLReference(
   request: CreateURLReferenceRequest,
   h: ResponseToolkit,
-): Promise<ResponseObject> {
-  return h.response().code(201);
+): Promise<ResponseObject | Boom<unknown>> {
+  try {
+    const url = request.payload.url;
+
+    const urlHash = crypto.randomBytes(url.length).toString('hex').slice(0, 15);
+
+    const urlResource = await URLReference.create({
+      originalURL: url,
+      URLHash: urlHash,
+    });
+
+    return h
+      .response({
+        url: `http://${process.env.DOMAIN}/${urlHash}`,
+      })
+      .code(201);
+  } catch (error) {
+    /* istanbul ignore next */
+    return badImplementation(error);
+  }
 }
