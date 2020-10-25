@@ -9,6 +9,8 @@ const swagger = {
       description: 'URL Shortener API Documentation',
       version: '1.0.0',
     },
+    tags: [{ name: 'URL Reference', description: 'URL Reference API' }],
+    grouping: 'tags',
     swaggerUI: true,
     documentationPage: true,
     documentationPath: '/docs',

@@ -3,6 +3,7 @@
 /////////////////////////////////////////
 import { Server } from '@hapi/hapi';
 import { registerPlugins } from 'plugins';
+import { registerAPIs } from 'api';
 
 /////////////////////////////////////////
 /*        server init function         */
@@ -21,6 +22,9 @@ export async function serverInit(): Promise<void> {
   try {
     //  Setup Hapi Plugins
     await registerPlugins(server);
+
+    // Setup APIs
+    await registerAPIs(server);
 
     // Start Server
     await server.start();

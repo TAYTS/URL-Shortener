@@ -1,0 +1,13 @@
+/////////////////////////////////////////
+/*           import utils              */
+/////////////////////////////////////////
+import { Request } from 'types';
+
+/////////////////////////////////////////
+/*             definition              */
+/////////////////////////////////////////
+export interface CreateURLReferenceRequest extends Request {
+  payload: {
+    url: string;
+  };
+}
