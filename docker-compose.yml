@@ -8,3 +8,12 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=password
+
+  mysqldb-test:
+    build: ./database
+    image: mysql_url:latest
+    container_name: mysqldb-test
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
