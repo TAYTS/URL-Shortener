@@ -6,8 +6,10 @@ import { Request as HapiRequest } from '@hapi/hapi';
 /////////////////////////////////////////
 /*             definition              */
 /////////////////////////////////////////
-export interface Request extends Omit<Omit<HapiRequest, 'query'>, 'params'> {
-  params: string | number;
+export interface Request extends Omit<HapiRequest, 'query'> {
+  params: {
+    [key: string]: string | number;
+  };
   query: {
     [key: string]: string | number;
   };
