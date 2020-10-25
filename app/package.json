@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsnd --respawn --transpile-only -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc",
-    "test:unit": "cross-env NODE_ENV=test jest"
+    "test:unit": "cross-env NODE_ENV=test jest",
+    "test:coverage": "cross-env NODE_ENV=test jest --no-cache --coverage"
   },
   "repository": {
     "type": "git",

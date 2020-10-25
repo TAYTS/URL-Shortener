@@ -3,5 +3,6 @@ module.exports = {
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'js'],
   modulePaths: ['<rootDir>/src/'],
-  testMatch: ['**/tests/**/*.test.(ts|js)'],
+  collectCoverage: true,
+  collectCoverageFrom: ['src/api/**/*.{js,ts}'],
 };
