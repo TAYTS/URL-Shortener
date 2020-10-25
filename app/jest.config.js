@@ -3,5 +3,5 @@ module.exports = {
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'js'],
   modulePaths: ['<rootDir>/src/'],
-  testMatch: ['**/test/**/*.test.(ts|js)'],
+  testMatch: ['**/tests/**/*.test.(ts|js)'],
 };
