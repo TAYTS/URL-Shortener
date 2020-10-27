@@ -11,5 +11,6 @@ export const createURLReferencePayload = object({
 }).label('Create URL Reference Payload');
 
 export const createURLReferenceResponse = object({
+  url: string().uri().required().example('http://www.google.com'),
   urlHash: string().length(15).required().example('in1abjq1abcd3de'),
 }).label('Create URL Reference Response');

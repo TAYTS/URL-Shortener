@@ -26,6 +26,7 @@ export async function createURLReference(
 
     return h
       .response({
+        url: url,
         urlHash: urlHash,
       })
       .code(201);
