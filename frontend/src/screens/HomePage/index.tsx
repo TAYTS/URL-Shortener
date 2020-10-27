@@ -32,7 +32,7 @@ const HomePage: FunctionComponent = () => {
         url: inpValue,
       })
         .then((res) => {
-          setShorterURL(res.data.url);
+          setShorterURL(res.data.urlHash);
         })
         .catch((err: AxiosError) => {
           if (err.response?.status === 400) {
@@ -44,8 +44,6 @@ const HomePage: FunctionComponent = () => {
     },
     [inpValue],
   );
-
-  console.log('homepaeg');
 
   return (
     <div className="home-page__main-container">

@@ -23,7 +23,7 @@ const RedirectPage: FunctionComponent<RedirectPageProps> = (props: RedirectPageP
         params: { urlHash },
       },
     } = props;
-    redirectPage({ url: urlHash })
+    redirectPage({ urlHash })
       .then((res) => {
         window.location.href = res.data.url;
       })

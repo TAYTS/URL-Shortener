@@ -11,6 +11,6 @@ import { AxiosPromise } from 'axios';
 /////////////////////////////////////////
 export function redirectPage(payload: GetURLReferencePayload): AxiosPromise<GetURLReferenceResponse> {
   return api.get<GetURLReferenceResponse>({
-    url: apiConfig.urlReference.redirectPage.replace('{urlHash}', payload.url),
+    url: apiConfig.urlReference.redirectPage.replace('{urlHash}', payload.urlHash),
   });
 }

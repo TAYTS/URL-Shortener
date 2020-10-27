@@ -15,9 +15,10 @@ export type RedirectPageProps = RouteComponentProps<RouteParams>;
 
 // API response
 export type GetURLReferencePayload = {
-  url: string;
+  urlHash: string;
 };
 
 export type GetURLReferenceResponse = {
   url: string;
+  urlHash: string;
 };

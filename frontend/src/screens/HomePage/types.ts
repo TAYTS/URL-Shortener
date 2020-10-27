@@ -14,4 +14,5 @@ export type CreateURLReferencePayload = {
 
 export type CreateURLReferenceSuccessResponse = {
   url: string;
+  urlHash: string;
 };
