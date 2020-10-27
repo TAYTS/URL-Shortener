@@ -1,7 +1,7 @@
 /////////////////////////////////////////
 /*          import controllers         */
 /////////////////////////////////////////
-import { createURLReference } from './controllers';
+import { createURLReference, getURLReference } from './controllers';
 
 /////////////////////////////////////////
 /*          import validator           */
@@ -13,6 +13,30 @@ import * as validator from './validator';
 /////////////////////////////////////////
 const swaggerTags = ['api', 'URL Reference'];
 export const URLReferenceRoutes = [
+  {
+    method: 'GET',
+    path: '/{urlHash}',
+    options: {
+      handler: getURLReference,
+      tags: swaggerTags,
+      description: 'Get the original URL',
+      validate: {
+        params: validator.getURLReferencePayload,
+      },
+      response: {
+        status: { 200: validator.getURLReferenceResponse },
+      },
+      plugins: {
+        'hapi-swagger': {
+          responses: {
+            200: { description: 'Original URL' },
+            404: {},
+            500: {},
+          },
+        },
+      },
+    },
+  },
   {
     method: 'POST',
     path: '/',
@@ -30,6 +54,7 @@ export const URLReferenceRoutes = [
         'hapi-swagger': {
           responses: {
             201: { description: 'Successfully created URL reference.' },
+            500: {},
           },
         },
       },

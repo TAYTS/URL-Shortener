@@ -11,3 +11,9 @@ export interface CreateURLReferenceRequest extends Request {
     url: string;
   };
 }
+
+export interface GetURLReferenceRequest extends Request {
+  params: {
+    urlHash: string;
+  };
+}

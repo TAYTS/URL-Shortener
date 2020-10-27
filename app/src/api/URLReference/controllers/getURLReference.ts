@@ -2,13 +2,17 @@
 /*            import library           */
 /////////////////////////////////////////
 import { ResponseToolkit, ResponseObject } from '@hapi/hapi';
+import { Boom, notFound, badImplementation } from '@hapi/boom';
 import { URLReference } from 'models';
-import { URLRedirectRequest } from '../types';
+import { GetURLReferenceRequest } from '../types';
 
 /////////////////////////////////////////
 /*        controller definition        */
 /////////////////////////////////////////
-export async function urlRedirect(request: URLRedirectRequest, h: ResponseToolkit): Promise<ResponseObject> {
+export async function getURLReference(
+  request: GetURLReferenceRequest,
+  h: ResponseToolkit,
+): Promise<ResponseObject | Boom<unknown>> {
   try {
     const urlHash = request.params.urlHash;
 
@@ -19,12 +23,15 @@ export async function urlRedirect(request: URLRedirectRequest, h: ResponseToolki
     });
 
     if (urlReference) {
-      return h.redirect(urlReference.originalURL);
+      return h.response({
+        url: urlReference.originalURL,
+        urlHash: urlHash,
+      });
     }
 
-    return h.redirect(process.env.DOMAIN);
+    return notFound('Invalid URL hash provided');
   } catch (error) {
     /* istanbul ignore next */
-    return h.redirect(process.env.DOMAIN);
+    return badImplementation();
   }
 }
