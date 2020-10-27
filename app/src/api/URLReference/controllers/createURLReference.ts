@@ -26,7 +26,7 @@ export async function createURLReference(
 
     return h
       .response({
-        url: `${process.env.DOMAIN}/${urlHash}`,
+        urlHash: urlHash,
       })
       .code(201);
   } catch (error) {
