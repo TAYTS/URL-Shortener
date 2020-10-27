@@ -1,12 +1,26 @@
+/////////////////////////////////////////
+/*            import library           */
+/////////////////////////////////////////
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Router } from 'react-router-dom';
 
+/////////////////////////////////////////
+/*            import utils             */
+/////////////////////////////////////////
+import reportWebVitals from './reportWebVitals';
+import Routers from 'components/Routers';
+import history from 'utils/history';
+import './index.scss';
+
+/////////////////////////////////////////
+/*            main component           */
+/////////////////////////////////////////
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router history={history}>
+      <Routers />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );
