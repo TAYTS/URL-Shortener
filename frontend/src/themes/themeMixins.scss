@@ -1,0 +1,19 @@
+@import './themeVariables.scss';
+
+@mixin button {
+  background-color: $accentColor;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: $font-size-sm;
+  outline: none;
+  padding: 6px 15px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparentize($accentColor, 0.2);
+    transition: background-color 0.2s ease-in-out;
+  }
+}

@@ -1,34 +1,61 @@
 @import 'themes/themeVariables.scss';
+@import 'themes/themeMixins.scss';
 
 .home-page__main-container {
+  background-color: $secondaryBackgroundColor;
   height: 100%;
-  background-color: $primaryBackgroundColor;
+  padding: 50px;
 
   .url-input__container {
-    width: 100%;
+    margin: 300px auto 50px;
     text-align: center;
     vertical-align: bottom;
 
     .url-input {
-      height: 50px;
-      width: 300px;
-      margin: 0 20px 0 0;
-      padding: 0px 15px;
-      border-radius: 8px;
+      background-image: none;
       border: 1px solid grey;
+      border-radius: 8px;
+      box-sizing: border-box;
       color: black;
       font-size: $font-size-lg;
-      background-image: none;
-      box-sizing: border-box;
+      height: 50px;
+      outline: none;
+      margin: 0 20px 0 0;
+      padding: 0px 15px;
+      width: 350px;
+
+      &:focus,
+      &:active,
+      &:hover {
+        border: 1px solid $accentColor;
+      }
     }
 
     .shorten-url-submit-btn {
+      @include button;
       height: 50px;
-      width: 100px;
-      display: inline-block;
-      border: 1px transparent;
-      border-radius: 8px;
       font-size: $font-size-lg;
+      width: 100px;
+    }
+  }
+
+  .message-card__container {
+    height: 60px;
+    line-height: 36px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    min-width: 500px;
+    max-width: 600px;
+
+    .url-link {
+      color: $accentColor;
+      text-decoration: none;
+    }
+
+    .copy-btn {
+      @include button;
+      margin-left: 12px;
     }
   }
 }

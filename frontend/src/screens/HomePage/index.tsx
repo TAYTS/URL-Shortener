@@ -3,11 +3,15 @@
 /////////////////////////////////////////
 import { AxiosError } from 'axios';
 import React, { FunctionComponent, useState, useCallback, FormEvent } from 'react';
+import isEmpty from 'lodash/isEmpty';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 /////////////////////////////////////////
 /*            import utils             */
 /////////////////////////////////////////
 import { createURLReference } from './api';
+
+import Card from 'components/Card';
 
 // import local styling
 import './index.scss';
@@ -27,12 +31,20 @@ const HomePage: FunctionComponent = () => {
     (event: FormEvent) => {
       event.preventDefault();
 
+      if (isEmpty(inpValue)) {
+        setErrorMessage('Please enter URL!');
+        return;
+      }
+
+      setShorterURL('');
       setErrorMessage('');
+
       createURLReference({
         url: inpValue,
       })
         .then((res) => {
-          setShorterURL(res.data.urlHash);
+          const domain = `${window.location.protocol}//${window.location.host}`;
+          setShorterURL(`${domain}/${res.data.urlHash}`);
         })
         .catch((err: AxiosError) => {
           if (err.response?.status === 400) {
@@ -59,8 +71,22 @@ const HomePage: FunctionComponent = () => {
           Shorten
         </button>
       </form>
-      {errorMessage && <div>Error: {errorMessage}</div>}
-      {shortenURL && <div>Shorten URL: {shortenURL}</div>}
+      {errorMessage && (
+        <Card className="message-card__container" type="danger">
+          Error: {errorMessage}
+        </Card>
+      )}
+      {shortenURL && (
+        <Card className="message-card__container">
+          Shorten URL:{' '}
+          <a className="url-link" href={shortenURL}>
+            {shortenURL}
+          </a>
+          <CopyToClipboard text={shortenURL}>
+            <button className="copy-btn">Copy</button>
+          </CopyToClipboard>
+        </Card>
+      )}
     </div>
   );
 };

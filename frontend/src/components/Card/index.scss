@@ -1,0 +1,16 @@
+@import 'themes/themeVariables.scss';
+
+.card__container {
+  border-radius: 12px;
+  background-color: $disabledColor;
+  color: black;
+  font-size: $font-size-sm;
+  min-height: 50px;
+  min-width: 50px;
+  padding: 12px 24px;
+}
+
+.card__container--danger {
+  background-color: $dangerColor;
+  color: white;
+}
