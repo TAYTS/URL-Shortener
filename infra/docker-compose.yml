@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  mysqldb:
+    build: "../database"
+    image: tayts/mysql_url:latest
+    container_name: mysqldb
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+
+  backend:
+    build: "../app"
+    image: tayts/url-shortener-backend:latest
+    container_name: backend
+    ports:
+      - 3001:3001
+
+  frontend:
+    build: "../frontend"
+    image: tayts/url-shortener-frontend:latest
+    container_name: frontend
+    ports:
+      - 80:80
