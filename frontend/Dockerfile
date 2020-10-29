@@ -4,6 +4,8 @@ FROM node:12 as build-deps
 WORKDIR /usr/src/app
 
 COPY package.json ./
+ARG REACT_APP_API_URL
+
 RUN npm install --silent
 COPY . .
 RUN npm run build

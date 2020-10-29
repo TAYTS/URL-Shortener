@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
-require('dotenv-flow').config();
+import { Helmet } from 'react-helmet';
 
 /////////////////////////////////////////
 /*            import utils             */
@@ -19,6 +19,12 @@ import './index.scss';
 /////////////////////////////////////////
 ReactDOM.render(
   <React.StrictMode>
+    <Helmet titleTemplate="%s">
+      <title>URL Shortener</title>
+      <meta charSet="utf-8" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Helmet>
     <Router history={history}>
       <Routers />
     </Router>
