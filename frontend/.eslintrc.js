@@ -9,6 +9,7 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
+    jest: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {

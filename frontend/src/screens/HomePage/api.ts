@@ -19,3 +19,4 @@ export function createURLReference(
     },
   });
 }
+/* istanbul ignore file */

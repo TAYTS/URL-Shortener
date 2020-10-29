@@ -13,7 +13,12 @@ import { CardProps } from './types';
 /////////////////////////////////////////
 /*            main component           */
 /////////////////////////////////////////
-const Card: FunctionComponent<CardProps> = ({ className, children, type = 'default' }: CardProps) => {
+const Card: FunctionComponent<CardProps> = ({
+  className,
+  children,
+  type = 'default',
+  dataTestId = 'card',
+}: CardProps) => {
   /////////////////////////////////////////
   /*              lifecycle              */
   /////////////////////////////////////////
@@ -22,6 +27,7 @@ const Card: FunctionComponent<CardProps> = ({ className, children, type = 'defau
       className={classnames('card__container', className, {
         'card__container--danger': type === 'danger',
       })}
+      data-testid={dataTestId}
     >
       {children}
     </div>

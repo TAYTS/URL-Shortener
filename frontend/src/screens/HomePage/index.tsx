@@ -58,26 +58,27 @@ const HomePage: FunctionComponent = () => {
   );
 
   return (
-    <div className="home-page__main-container">
-      <form className="url-input__container" onSubmit={shortenURLHandler}>
+    <div className="home-page__main-container" data-testid="home page">
+      <form className="url-input__container" onSubmit={shortenURLHandler} data-testid="url form">
         <input
           className="url-input"
           placeholder="Shorten URL"
           type="text"
           autoComplete="off"
           onChange={(e) => setInputValue(e.target.value)}
+          data-testid="url text input"
         />
-        <button className="shorten-url-submit-btn" type="submit">
+        <button className="shorten-url-submit-btn" type="submit" data-testid="url btn">
           Shorten
         </button>
       </form>
       {errorMessage && (
-        <Card className="message-card__container" type="danger">
+        <Card className="message-card__container" type="danger" dataTestId="error message card">
           Error: {errorMessage}
         </Card>
       )}
       {shortenURL && (
-        <Card className="message-card__container">
+        <Card className="message-card__container" dataTestId="converted url message card">
           Shorten URL:{' '}
           <a className="url-link" href={shortenURL}>
             {shortenURL}

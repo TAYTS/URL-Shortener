@@ -1,6 +1,7 @@
 /////////////////////////////////////////
 /*            import library           */
 /////////////////////////////////////////
+import React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 
 /////////////////////////////////////////
@@ -32,7 +33,7 @@ const RedirectPage: FunctionComponent<RedirectPageProps> = (props: RedirectPageP
       });
   });
 
-  return null;
+  return <div data-testid="redirect page" />;
 };
 
 export default RedirectPage;

@@ -14,3 +14,4 @@ export function redirectPage(payload: GetURLReferencePayload): AxiosPromise<GetU
     url: apiConfig.urlReference.redirectPage.replace('{urlHash}', payload.urlHash),
   });
 }
+/* istanbul ignore file */

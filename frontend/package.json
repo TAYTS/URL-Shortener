@@ -9,6 +9,7 @@
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "cross-var": "^1.1.0",
+    "faker": "^5.1.0",
     "history": "^4.10.1",
     "lodash": "^4.17.20",
     "query-string": "^6.13.6",
@@ -26,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:docker": "cross-var docker build -t url-shortener-frontend:$npm_package_version -t url-shortener-frontend:latest .",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test:coverage": "react-scripts test --coverage --no-cache --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
+    "@types/faker": "^5.1.3",
     "@types/history": "^4.7.8",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.162",
@@ -82,6 +85,12 @@
     "src/**/*.+(js|jsx|ts|tsx)": [
       "prettier --write",
       "eslint --fix"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/{screens,components}/**/*.{js,ts,tsx}",
+      "!**/types.ts"
     ]
   }
 }
