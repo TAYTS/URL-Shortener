@@ -8,17 +8,26 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=password
+    restart: on-failure
 
   backend:
     build: "../app"
     image: tayts/url-shortener-backend:latest
     container_name: backend
+    depends_on:
+      - mysqldb
+    environment:
+      - NODE_ENV=production
     ports:
       - 3001:3001
+    restart: on-failure
 
   frontend:
     build: "../frontend"
     image: tayts/url-shortener-frontend:latest
     container_name: frontend
+    depends_on:
+      - backend
     ports:
       - 80:80
+    restart: on-failure
