@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsnd --respawn --transpile-only -r tsconfig-paths/register ./src/index.ts",
-    "build": "tsc",
+    "build": "cross-env NODE_ENV=production tsc",
     "build:docker": "cross-var docker build --build-arg ENV=production -t url-shortener-backend:$npm_package_version -t url-shortener-backend:latest .",
     "test:unit": "cross-env NODE_ENV=test jest",
     "test:coverage": "cross-env NODE_ENV=test jest --no-cache --coverage"
