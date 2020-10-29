@@ -25,7 +25,7 @@ const RedirectPage: FunctionComponent<RedirectPageProps> = (props: RedirectPageP
     } = props;
     redirectPage({ urlHash })
       .then((res) => {
-        window.location.href = res.data.url;
+        window.location.replace(res.data.url);
       })
       .catch(() => {
         goto('/');
