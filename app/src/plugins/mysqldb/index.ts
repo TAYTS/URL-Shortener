@@ -18,7 +18,11 @@ const mysqldb = {
   register: async function (server: Server): Promise<void> {
     const MYSQL_URL = process.env.MYSQL_URL;
 
-    const sequelize = new Sequelize(MYSQL_URL, { dialect: 'mysql', retry: { max: 10 } });
+    const sequelize = new Sequelize(MYSQL_URL, {
+      dialect: 'mysql',
+      retry: { max: 10 },
+      logging: process.env.NODE_ENV === 'development' ? console.log : false,
+    });
 
     InitModels(sequelize);
 
