@@ -18,6 +18,10 @@ describe('Create URL Reference', () => {
     server = await serverInit();
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   afterAll(async () => {
     await server.stop();
   });
@@ -36,8 +40,10 @@ describe('Create URL Reference', () => {
     const response = await server.inject(injectOptions);
     expect(URLReference.create).toBeCalledTimes(1);
     expect(response.statusCode).toEqual(201);
-    const paylpad = JSON.parse(response.payload);
-    expect(paylpad).toHaveProperty('url');
+
+    const payload = JSON.parse(response.payload);
+    expect(payload).toHaveProperty('url');
+    expect(payload).toHaveProperty('urlHash');
   });
 
   it('it should return 400 with empty payload', async () => {
