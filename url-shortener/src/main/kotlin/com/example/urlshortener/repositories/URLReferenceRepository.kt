@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository
 
 interface URLReferenceRepository : CrudRepository<URLReference, Long> {
     fun findByURLHash(urlHash: String): URLReference?
+    fun findAllByOrderByCreatedAtDesc(): Collection<URLReference>
 }

@@ -10,9 +10,8 @@ import javax.xml.bind.DatatypeConverter
 class URLReferenceServiceImp(private val repository: URLReferenceRepository) : URLReferenceService {
     override fun getURLReference(urlHash: String): URLReference? = repository.findByURLHash(urlHash)
 
-    override fun getAllURLReference(): Collection<URLReference> {
-        TODO("Not yet implemented")
-    }
+    override fun getAllURLReferenceByCreatedAtDesc(): Collection<URLReference> =
+        repository.findAllByOrderByCreatedAtDesc()
 
     override fun createURLReference(url: String): URLReference {
         val bytes = MessageDigest.getInstance("SHA-512").digest(url.toByteArray())
