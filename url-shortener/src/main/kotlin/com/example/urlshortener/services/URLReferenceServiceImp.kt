@@ -13,9 +13,7 @@ class URLReferenceServiceImp(private val repository: URLReferenceRepository) : U
         TODO("Not yet implemented")
     }
 
-    override fun getURLReference(urlHash: String): URLReference? {
-        TODO("Not yet implemented")
-    }
+    override fun getURLReference(urlHash: String): URLReference? = repository.findByURLHash(urlHash)
 
     override fun getAllURLReference(): Collection<URLReference> {
         TODO("Not yet implemented")
