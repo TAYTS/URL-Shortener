@@ -34,6 +34,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     runtimeOnly("mysql:mysql-connector-java")
     implementation("org.springdoc:springdoc-openapi-ui:1.5.1")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.5.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
