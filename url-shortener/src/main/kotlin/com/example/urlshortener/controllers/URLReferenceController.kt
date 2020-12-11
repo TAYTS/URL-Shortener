@@ -14,7 +14,7 @@ class URLReferenceController(private val urlReferenceService: URLReferenceServic
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     fun createURLReference(@RequestBody @Valid request: URLRequest) =
-        urlReferenceService.createURLReference(request.url)
+        urlReferenceService.createURLReference(url = request.url)
 }
 
 data class URLRequest(
