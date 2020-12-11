@@ -4,7 +4,6 @@ import com.example.urlshortener.entities.URLReference
 
 
 interface URLReferenceService {
-    fun getURLReference(id: Long): URLReference?
     fun getURLReference(urlHash: String): URLReference?
     fun getAllURLReference(): Collection<URLReference>
     fun createURLReference(url: String): URLReference

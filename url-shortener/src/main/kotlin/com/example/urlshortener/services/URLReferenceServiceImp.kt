@@ -8,11 +8,6 @@ import javax.xml.bind.DatatypeConverter
 
 @Service
 class URLReferenceServiceImp(private val repository: URLReferenceRepository) : URLReferenceService {
-
-    override fun getURLReference(id: Long): URLReference? {
-        TODO("Not yet implemented")
-    }
-
     override fun getURLReference(urlHash: String): URLReference? = repository.findByURLHash(urlHash)
 
     override fun getAllURLReference(): Collection<URLReference> {
