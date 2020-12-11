@@ -1,4 +1,4 @@
-package com.example.urlshortener.controllers
+package com.example.urlshortener.exceptions
 
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
